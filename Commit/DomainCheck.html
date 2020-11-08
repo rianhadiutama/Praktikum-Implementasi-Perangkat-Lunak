@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data-Type Checks</title>
+</head>
+<body>
+    <form name="myForm" action="" onsubmit="return validateForm()" method="POST">
+        NIM <input type="text" id="nim" name="name">NIM harus 10 digit <br>
+        Semester <input type="text" id="sem" name="sem">Semester tidak boleh kurang dari 1 dan lebih dari 12 <br>
+        <input type="submit" value="Submit">
+    </form>
+    <script type="text/javascript">
+        function validateForm() {
+            var nim = document.myForm.nim.value;  
+            var sem = document.myForm.sem.value;
+            if(nim.length != 10){
+                alert("NIM HARUS 10 DIGIT");
+                return false;
+            }
+             if ((sem<1) || (sem>12)) {
+                 alert("Semenster harus diisi 1-12");
+                 return false;
+            }return true;
+        }
+    </script>
+</body>
+</html>
