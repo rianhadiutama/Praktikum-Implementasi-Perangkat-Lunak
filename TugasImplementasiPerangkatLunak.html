@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Implementasi Interface</title>
+</head>
+<body>
+    <form name="formTugas" id="tugasku" method="POST">
+        <input type="text" name="username" id="username" placeholder="Username"><br>
+        <input type="password" name="password" id="pass" placeholder="Password"><br>
+        <input type="password" name="repeat" id="repeat" placeholder="Konfirmasi 
+Password"><br>
+        <input type="text" name="email" id="email" placeholder="Email"><br>
+        <input type=”text” name=”telp” id=”telp” placeholder=”Nomor Telpon”><br>
+        <textarea id="alamat" style="width: 167px;" placeholder="Alamat"></textarea><br>
+        <input type="submit" name="" value="Submit" onclick="return validateForm()">
+    </form>
+<div>
+    <script type="text/javascript">
+        function validateForm(){
+            var usernamee = document.formTugas.username.value;
+            if(usernamee.length<3 || usernamee.length>15){
+                alert("Username harus input minimal 3-15 karakter");
+                return false;
+            }
+            
+            var passwordd = document.formTugas.password.value;
+            var confirmPassword = document.formTugas.repeat.value;
+            if(passwordd != "" && passwordd == confirmPassword){
+                if(passwordd.length<4){
+                    alert("Anda harus memasukkan password minimal 4 karakter");
+                    return false;
+                }
+                re = /[0-9]/;
+                if(!re.test(passwordd)){
+                    alert("Anda harus memasukkan password dengan ada Huruf Besar dan Angka");
+                    passwordd.focus();
+                    return false;
+                }
+                re = /[A-Z]/;
+                if (!re.test(passwordd)) {
+                    alert("Anda harus memasukkan password dengan ada Huruf Besar dan Angka");
+                    passwordd.focus();
+                    return false;
+                }
+            }
+            else{
+                alert("Password dan Konfirmasi password tidak sama. Mohon di-cek kembali.");
+                return false;
+            }
+
+            var emaill = document.formTugas.email.value;
+            var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if(!re.test(emaill)){
+                alert("Alamat Email anda tidak benar.");
+                emaill.focus();
+                return false;
+            }
+            var noTelp = document.formTugas.telp.value;
+            if(noTelp<10 || noTelp>12){
+                alert("Nomor Telepon harus diisi minimal 10-12 angka");
+                return false;
+            }
+
+            var alamatt = document.formTugas.telp.value;
+            if(alamatt == ""){
+                alert("Alamat tidak boleh kosong");
+                return false;
+            }
+            alert("Anda telah mendaftar dengan benar");
+            return true;
+        }
+    </script>
+</div>
+</body>
+</html>
